@@ -20,7 +20,7 @@ export default function DoctorCard  ({ doctor }) {
   
     const handleClose = () => {
      
-      setOpen(false);
+      setPop(false);
     }; 
 
     const handleMessageClose = () => {
