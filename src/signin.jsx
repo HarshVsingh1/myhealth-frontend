@@ -66,8 +66,17 @@ function Signin() {
                 const data = await response.json() ;
                   sessionStorage.setItem("token", "bearer "+data.token)
                   console.log(data)
-                  sessionStorage.setItem("email", data.email)
-                  navigate('/')
+                  sessionStorage.setItem("email", data.email) 
+                  if(user === "admin"){
+
+                    navigate('/admindashboard')
+                  } 
+                  if(user === "user"){
+                    navigate('/userdashboard') 
+                  }
+                  if(user === "superuser"){
+                    navigate('/superuserdashboard')
+                  }
               }else {
                 console.error('Signup failed.');
                 openbox('Signup failed check username password and user type','error')
@@ -101,7 +110,7 @@ function Signin() {
                     </div>
                     <div id="infoSection" >
                           <div id="text" >
-                            Log in to Shop it
+                            Log in to Myhealth
                           </div>
                           <div>
                             Enter your detail below
@@ -118,6 +127,7 @@ function Signin() {
                              >
                                <MenuItem value={'admin'}>Admin</MenuItem>
                                <MenuItem value={'users'}>User</MenuItem>
+                               <MenuItem value={'superuser'}>SuperUser</MenuItem>
                                
                              </Select>
                            </FormControl>

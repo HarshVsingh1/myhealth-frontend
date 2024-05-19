@@ -91,7 +91,7 @@ const userEmail = sessionStorage.getItem('email')
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.date}</StyledTableCell>
                 <StyledTableCell align="right">{row.time}</StyledTableCell>
-                <StyledTableCell align="right">{"pending"}</StyledTableCell>
+                <StyledTableCell align="right">{row.paid?("Paid"): ("Pending")}</StyledTableCell>
                
               </StyledTableRow>
             ))}
