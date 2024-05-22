@@ -16,7 +16,8 @@ function Signup() {
     const [message,setMessage] = useState('')
     const [servity,setServity] = useState('success')
     const [open,setOpen] = useState(false) ;
-
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    
     const isEmailValid = (email) => {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const isValid = emailPattern.test(email);
@@ -43,8 +44,8 @@ function Signup() {
       const signup = async () => {
           
         try { 
-              
-               const response = await fetch(`http://localhost:3000/users/signup` , {
+          console.log(API_BASE_URL )
+               const response = await fetch(`${API_BASE_URL}/users/signup` , {
                  method : 'POST' ,
                  headers : {
                      'Content-Type' : 'application/json'

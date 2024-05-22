@@ -6,12 +6,9 @@ import axios from 'axios';
 export default function DoctorRequestCard  ({ doctor }) { 
     
     const [open, setOpen] = useState(false);
-    const [selectedTime, setSelectedTime] = useState('');
-    const [selectedDate, setSelectedDate] = useState('');
     const [servity,setServity] = useState('success')
-    const [pop,setPop] = useState(false)
     const [message,setMessage] = useState('')
-
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const handleClickOpen = () => {
       setPop(true);
     };
@@ -46,7 +43,7 @@ export default function DoctorRequestCard  ({ doctor }) {
                
                 
         }
-         const response = await axios.patch('http://localhost:3000/doctor/approve' , data)   ;
+         const response = await axios.patch(`${API_BASE_URL}/approve` , data)   ;
            console.log(data)
          if(response.status == 200 ) {
                 

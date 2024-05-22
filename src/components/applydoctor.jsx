@@ -3,7 +3,6 @@ import { Button, TextField } from '@mui/material'
 import './profile.css'
 import { useState } from 'react'
 import axios from 'axios';
-import { Password } from '@mui/icons-material';
 
 
 
@@ -30,10 +29,11 @@ export default function Applydoctor() {
                 const {name , value} = e.target 
                 setFormdata({...formdata,[name] : value})
         }
+        const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
         const applyDoctor =  async () => {
           try {
-                const response  = await axios.post('http://localhost:3000/users/applydoctor' , formdata) 
+                const response  = await axios.post(`${API_BASE_URL}/users/applydoctor` , formdata) 
                 console.log(response)
 
 

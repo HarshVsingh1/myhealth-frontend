@@ -41,7 +41,7 @@ export default function HomeTables() {
 const [rows,setRows] = useState([])
  
 const userEmail = sessionStorage.getItem('email')
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   useEffect(()=>{
 
     const approve = async (appointmentId) => {
@@ -52,7 +52,7 @@ const userEmail = sessionStorage.getItem('email')
       }
       
         
-      const response = await axios.post('http://localhost:3000/doctor/approvedappointments', data) 
+      const response = await axios.post(`${API_BASE_URL}/doctor/approvedappointments`, data) 
     
       if(response.status == 200){
         console.log(response.data)

@@ -15,10 +15,10 @@ export default function Clienthome() {
  
 
     const [doctors , setDoctors] = useState([])
-   
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     useEffect(() => {
             const fetch = async() => {
-                      const response = await axios.get('http://localhost:3000/doctors')
+                      const response = await axios.get(`${API_BASE_URL}/doctors`)
                       console.log("hi")
                       if(response){
                        

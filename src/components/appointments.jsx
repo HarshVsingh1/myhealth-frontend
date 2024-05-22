@@ -34,15 +34,15 @@ export default function AppointmentTables() {
   const [rows, setRows] = useState([]);
  
   const userEmail = sessionStorage.getItem("email");
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const checkoutHandler = async (price , appointmentId) => {
     if (!sessionStorage.getItem("email")) {
       return history("/users/login");
     }
     try {
-      const { data: { key } } = await axios.get("http://localhost:3000/user/appointments/getkey");
-      const { data: { order } } = await axios.post("http://localhost:3000/user/appointments/checkout", { price });
+      const { data: { key } } = await axios.get(`${API_BASE_URL}/user/appointments/getkey`);
+      const { data: { order } } = await axios.post(`${API_BASE_URL}/user/appointments/checkout`, { price });
   
       const options = {
         key,
@@ -55,7 +55,7 @@ export default function AppointmentTables() {
           
   
           try {
-            const verifyResponse = await axios.post(`http://localhost:3000/user/appointments/paymentVerification/${sessionStorage.getItem("email")}/${appointmentId}`);
+            const verifyResponse = await axios.post(`${API_BASE_URL}/user/appointments/paymentVerification/${sessionStorage.getItem("email")}/${appointmentId}`);
 
             if (verifyResponse.data.success) {
               console.log('Payment Successful and Verified');
@@ -93,7 +93,7 @@ export default function AppointmentTables() {
 
     const fetch = async () => {
       const response = await axios.post(
-        "http://localhost:3000/user/appointments",
+        `${API_BASE_URL}/user/appointments`,
         data
       );
       setRows(response.data);

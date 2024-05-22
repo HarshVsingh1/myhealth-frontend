@@ -3,7 +3,6 @@ import logo from './assets/logo.png'
 import PieChartIcon from '@mui/icons-material/PieChart';
 import HomeIcon from '@mui/icons-material/Home';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Sidenavbar from './components/sidenavbar';
 import { useState } from 'react';

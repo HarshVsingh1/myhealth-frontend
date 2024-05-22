@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import man from '../assets/man.png'
-import { Alert, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, TextField } from '@mui/material';
-import DatePicker from 'react-datepicker';
+import { Alert, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar } from '@mui/material';
 import axios from 'axios';
 
 export default function DoctorCard  ({ doctor }) { 
@@ -13,7 +12,7 @@ export default function DoctorCard  ({ doctor }) {
     const [servity,setServity] = useState('success')
     const [pop,setPop] = useState(false)
     const [message,setMessage] = useState('')
-
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const handleClickOpen = () => {
       setPop(true);
     };
@@ -52,7 +51,7 @@ export default function DoctorCard  ({ doctor }) {
                 price : doctor.fees
                 
         }
-         const response = await axios.post('http://localhost:3000/appointment/request' , data)   ;
+         const response = await axios.post(`${API_BASE_URL}/appointment/request` , data)   ;
            console.log(data)
          if(response.status == 200 ) {
                 

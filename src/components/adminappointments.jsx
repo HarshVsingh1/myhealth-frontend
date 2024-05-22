@@ -41,10 +41,10 @@ export default function AdminAppointmentTables() {
   const [rows ,setRows] = useState([])
 
 const userEmail = sessionStorage.getItem('email')
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const fetch = async () => {
                
-  const response = await axios.post('http://localhost:3000/doctor/appointments', {userEmail})
+  const response = await axios.post(`${API_BASE_URL}/doctor/appointments`, {userEmail})
   setRows(response.data)
 console.log(response)
 
@@ -67,7 +67,7 @@ const approve = async (id) => {
   }
   console.log(data)
     
-  const response = await axios.put('http://localhost:3000/doctor/appointment/approve', data) 
+  const response = await axios.put(`${API_BASE_URL}/doctor/appointment/approve`, data) 
 
   if(response.status == 200){
    fetch()
